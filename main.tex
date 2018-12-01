@@ -1,0 +1,112 @@
+\documentclass[12pt]{article}
+\usepackage{graphicx}
+\usepackage{amsfonts}
+\usepackage{fancyhdr}
+\usepackage{comment}
+\usepackage{amsmath}
+\usepackage[a4paper, top=2.5cm, bottom=2.5cm, left=2.2cm, right=2.2cm]%
+{geometry}
+\usepackage{times}
+\usepackage{amsmath}
+\usepackage{changepage}
+\usepackage{amssymb}
+\usepackage{fixltx2e}
+\usepackage{enumerate}
+\usepackage{graphicx}
+\usepackage{float}
+\newtheorem{theorem}{Theorem}
+\newtheorem{acknowledgement}[theorem]{Acknowledgement}
+\newtheorem{algorithm}[theorem]{Algorithm}
+\newtheorem{axiom}{Axiom}
+\newtheorem{case}[theorem]{Case}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{conclusion}[theorem]{Conclusion}
+\newtheorem{condition}[theorem]{Condition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{criterion}[theorem]{Criterion}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{exercise}[theorem]{Exercise}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{solution}[theorem]{Solution}
+\newtheorem{summary}[theorem]{Summary}
+\newenvironment{proof}[1][Proof]{\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+
+\begin{document}
+
+\title{SIE 545: Fundamentals of Optimization \\Homework 5}
+\author{Martin Manuel Lopez \\lopez9@email.arizona.edu \\Systems and Industrial Engineering}
+\date{December 4, 2018}
+\maketitle
+\section{BSS 6.3}
+    $\phi(x,y)$ is a continuous function $x \in X \subseteq R^n $ and $y \in Y \subseteq R^m$. We need to provide the following proof:\\
+        \begin{align*}
+            &\sup_{y \in Y} \inf_{x \in X} \phi(x,y) \leq \inf_{x \in X} \sup_{y \in Y} \phi(x,Y)\\
+        \end{align*}
+    We use the following definition for $\phi$: \\
+        \begin{align*}
+            &\inf_{x \in X} \phi(x,y) \leq \phi(x,y) \leq \sup_{y \in Y} \phi(x,y)\\
+        \end{align*}
+    Let us take the left hand side of the equation and define it as:\\
+        \begin{align*}
+            &g(y) = \inf_{x \in X} \phi (x,y) \\ 
+        \end{align*}
+    We then take the right hand side of the same equation and define as:\\ 
+        \begin{align*}
+            &h(x) = \sup_{y \in Y} \phi (x,y)
+        \end{align*}
+    We reformulate the equation: \\
+        \begin{align*}
+            &\sup_{y \in Y} g(y) \leq \inf_{x \in X} h(x)\\
+        \end{align*}
+    We finaly replace $g(y)$ and $h(x)$\\
+        \begin{align*}
+             &\sup_{y \in Y} \inf_{x \in X} \phi(x,y) \leq \inf_{x \in X} \sup_{y \in Y} \phi(x,Y)\\
+        \end{align*}
+\section{BSS 6.10}
+    Let us consider the following problem: \\
+        \begin{align*}
+            &\min x_1^2 + x_2^2\\
+            &s.t.\\
+            &x_1 + x_2 - 4 \geq 0\\
+            &x_1 \geq 0\\
+            &x_2 \geq 0 \\
+        \end{align*}
+    We will reformulate the problem:\\
+        \begin{align*}
+            &\min x_1^2 + x_2^2\\
+            &s.t.\\
+            &4-x_1-x_2 \leq 0\\
+            &x_1 \geq 0\\
+            &x_2 \geq 0 \\
+        \end{align*}
+    a.) We must verify that the optimal solution is $\bar x = (2,2)^T$ with $f(\bar x) = 8$. \\ 
+        \begin{align*}
+            &\phi (x,u) = x_1^2 + x_2^2 + u (4 - x_1 - x_2)\\
+            &L(x) = \phi (x,y) = (x_1 - \frac{u}{2})^2 + u (x_2 - \frac{u}{2})^2 - \frac{u^2}{2} + 4u\\
+        \end{align*}
+    We utilize KKT necessary and sufficient conditions: \\
+        \begin{align*}
+            &\nabla L(\bar x) = \nabla f(\bar x) + \sum_{i \in I} \bar u_i g_i (\bar x) = 0\\ 
+            &\nabla f(\bar x) 
+                \begin{bmatrix}
+                    2x_1\\
+                    2x_2\\
+                \end{bmatrix} = 
+                \begin{bmatrix}
+                    4\\
+                    4\\
+                \end{bmatrix}
+        \end{align*}
+        
+\end{document}
