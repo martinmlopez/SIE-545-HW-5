@@ -108,5 +108,73 @@
                     4\\
                 \end{bmatrix}
         \end{align*}
-        
+    We then have the following : \\ 
+        \begin{align*}
+            &L(\bar x) = \begin{bmatrix}
+                4\\
+                4\\
+            \end{bmatrix} + 
+            u_1 
+            \begin{bmatrix}
+                -1\\
+                -1\\
+            \end{bmatrix} + 
+            u_2 
+            \begin{bmatrix}
+                1\\
+                0\\
+            \end{bmatrix} + 
+            u_3 
+            \begin{bmatrix} 
+                0\\
+                1\\
+            \end{bmatrix} = 
+            \begin{bmatrix}
+                0\\
+                0\\
+            \end{bmatrix}
+        \end{align*}
+    We obtain the following CS: \\ 
+        \begin{align*}
+            &4 - u_1 + u_2 = 0 \\
+            &4 - u_1 + u_3 = 0 \\ 
+            &\Rightarrow\\
+            &u_1 = 4 + u_2\\
+            &4 - 4 - u_2 + u_3 = 0\\
+            &\Rightarrow\\
+            &u_2 = u_3\\
+        \end{align*}
+    We let $u_3 = u_2 = 0$ thus we get $u_1 = 4$ and thus $u_{i \in I} \geq 0$\\ 
+    We check the Hessian Matrix to make sure that it meets the KKT sufficient conditions:\\
+        \begin{align*}
+            &\nabla^2 L(\bar x) = 
+                \begin{bmatrix}
+                    2 & 0 \\
+                    0 & 2 \\
+                \end{bmatrix}
+            &det|\nabla^2 L(\bar x) | = 4 > 0\\
+        \end{align*}
+    We thus have the Hessian Matrix as Positive Definite and meet the KKT necessary and sufficient conditions based on the first and second order theorems. We thus conclude that $\bar x = (2,2)^T $ and get the optimal function value of $f(\bar x) = 8$. \\
+    b.) We get the Langrange function: 
+    \begin{align*}
+        & \theta (u) = \inf_{x \in X} \phi (x,u) = \inf_{x \in X} [(x_1 - \frac{u}{2})^2 + (x_2 - \frac{u}{2})^2 - \frac{u^2}{2} + 4u]\\
+        &\Rightarrow\\
+        &\theta (u) = \min_{x \in X} [(x_1 - \frac{u}{2})^2 + (x_2 - \frac{u}{2})^2 - \frac{u^2}{2} + 4u]\\
+        &\Rightarrow\\
+    \end{align*}
+    We have the following condition in finding the optimal solution to the minimizing problem:\\
+        \begin{align*}
+            &u_i \geq 0\\
+        \end{align*}
+    We now see that the follwing Dual Problem is : \\
+        \begin{align*}
+            & \max \theta (u) = \max - \frac{u^2}{2} + 4u\\
+            &u \geq 0\\
+        \end{align*}
+    We now solve for Dual Problem to confirm that max value is equal to Primal and there is no duality gap when we solve and find $u = 4$: \\ 
+        \begin{align*}
+            &\theta(4) = -\frac{16}{2} + 16 = 16 - 8 = 8 \\
+        \end{align*}
+    c.) We must solve the Dual problem using the cutting plane algorithm:\\
+    
 \end{document}
