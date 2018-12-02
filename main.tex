@@ -269,7 +269,7 @@
         \begin{align*}
             &z_4 = \frac{33}{4} \geq \theta (u_4) = \frac{255}{32} \approx 7.96\\
         \end{align*}
-    We continue to iterate until $z_k \leq \theta(u_k)$, the following are the results:
+    We continue to iterate until $z_k \leq \theta(u_k)$, the following are the results the table renders the results up to iteration 6.\\
         \begin{table}[]
             \begin{tabular}{@{}cccccc@{}}
             \toprule
@@ -281,6 +281,29 @@
             5              & 8.0625       & $\frac{33}{8}$  & $\approx 7.992$              & $(\frac{33}{16}, \frac{33}{16})^T$ & $z \leq \frac{225}{32} + \frac{u}{4}$   \\
             6              & 8.0156       & $\frac{63}{16}$ & 7.998                       & $(\frac{63}{32}, \frac{63}{32})^T$ & $z \leq \frac{1089}{128} - \frac{u}{8}$ \\ \bottomrule
             \end{tabular}
-        \end{table}        
-
+        \end{table}\\        
+    d.) We must show that $\theta$ is differentiable everywhere and solve it using the gradient method.\\
+    We have the following reduced Dual problem:\\
+        \begin{align*}
+            &\theta(u) = -\frac{u^2}{2} + 4u\\
+        \end{align*}
+    We notice that $\theta(u)$ is differentiable everywhere. We begin our iteration process with the following $u_0 = 0$ and thuse have the following result: \\
+        \begin{align*}
+            &\theta(0) = -\frac{0^2}{2} + 4(0) = 0\\
+        \end{align*}
+    We obtain the following max for our d:\\
+        \begin{align*}
+            &d = \max{0,4} = 4\\
+            &\Rightarrow\\
+            &\max_{\lambda \geq 0} \theta(0+4\lambda) = 16\lambda -8\lambda^2\\
+            &\Rightarrow\\
+            &\lambda = 1\\
+            &\Rightarrow\\
+            &u_1=4\lambda = 4\\
+        \end{align*}
+    We have the $x_1 = x_2 = 2$ and $u_1 $ is nonzero and non-negative. We have the following:\\
+        \begin{align*}
+            &d=-2-2+4 = 0 
+        \end{align*}
+\section{BSS 6.13}
 \end{document}
