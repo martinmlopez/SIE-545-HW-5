@@ -175,6 +175,87 @@
         \begin{align*}
             &\theta(4) = -\frac{16}{2} + 16 = 16 - 8 = 8 \\
         \end{align*}
-    c.) We must solve the Dual problem using the cutting plane algorithm:\\
-    
+    c.) We must solve the Dual problem using the cutting plane algorithm starting with $x_0 = (3,3)^T:$\\
+    We begin with the Dual problem: 
+        \begin{align*}
+            &\theta(u) = \min (x_1 - \frac{u}{2})^2 + (x_2 - \frac{u}{2})^2 - \frac{u^2}{2} + 4u \\ 
+            &x_0 = (3,3)^T\\
+            &\theta(x_0) = (3 - \frac{u}{2})^2 + (3 - \frac{u}{2})^2 - \frac{u^2}{2} + 4u \\ 
+            &\Rightarrow\\
+            &\text{Master program:}\\
+            &\quad \max \quad z \\ 
+            &s.t.\\
+            &\quad \quad z \leq 18-2u\\
+            &\quad \quad u \geq 0\\\\
+            &\Rightarrow z_1 = 18 , x_1 = (0,0)^T 
+        \end{align*}
+    We then check Iteration 1:\\
+        \begin{align*}
+            &z_k \leq \theta(u_k)\\
+            &\Rightarrow z_1 \leq \theta(u_1)\\
+            &\Rightarrow 18 \leq \theta(u_1) = \min x_1^2 + x_2^2\\
+            &\Rightarrow 18 \geq 0\\
+        \end{align*}
+    We must iterate again: Iteration 2:\\
+        \begin{align*}
+            &x_1 = (0,0)^T\\
+            & \max \quad \theta(u_1) = (0 - \frac{u}{2})^2 + (0 - \frac{u}{2})2 - \frac{u^2}{2} + 4u = 4u\\
+        \end{align*}
+    Our master program changes in iteration 2:\\ 
+        \begin{align*}
+            & max \quad z\\
+            &s.t.\\
+            &\quad z\leq 18 - 4u\\
+            &\quad z \leq 4u\\
+            &\quad u \geq 0\\
+        \end{align*}
+    We then solve the master program at get the following:\\
+        \begin{align*}
+            &18 -2u = 4u\\
+            &\Rightarrow u = u_2 = 3\\
+            &z_2 = 12\\
+            &\theta(u_2) = (x_1 - \frac{3}{2})^2 + (x_2 - \frac{3}{2})^2 - \frac{3^2}{2} + 4(3)\\
+            &\theta(u_2) = (x_1 - \frac{3}{2})^2 + (x_2 - \frac{3}{2})^2 + \frac{15}{2}\\
+        \end{align*}
+    We get the following result for $x_1 = (\frac{3}{2}, \frac{3}{2})^T$.\\
+    We compare $z_2 \leq \theta(u_2) \Rightarrow$  $12 \geq \frac{15}{2}$
+    We continue to the following iteration:\\
+    Iteration 3:\\
+        \begin{align*}
+            &\theta(u_3) = (\frac{3}{2} - \frac{u}{2})^2 + (\frac{3}{2} - \frac{u}{2})^2 - \frac{u^2}{2} + 4u\\
+            &\Rightarrow\\
+            &\theta(u_3) = u + \frac{9}{2}\\
+        \end{align*}
+    We formulate the master problem by adding constraint:
+    \begin{align*}
+        & \max \quad z\\
+        &s.t.\\
+        &\quad z\leq 18 - 4u\\
+        &\quad z \leq 4u\\
+        &\quad z \leq u + \frac{9}{2}\\
+        &\quad u \geq 0\\
+    \end{align*}
+    We determine value for $z_3$ and find that optimal solution for master program contain the following values for $z_3$ and $u_3$. $u_3 = \frac{9}{2} $. This renders the optimal solution to be $z_3 = 9$. We know must compare $z_3 \leq \theta(u_3)$:\\
+        \begin{align*}
+            &\theta(u_3) = (x_1 - \frac{9}{4})^2 + (x_2 - \frac{9}{4})^2 + \frac{63}{8}\\
+            &\Rightarrow\\
+            &z_3 = 9 \geq \frac{63}{8} = \theta(u_3)\\
+        \end{align*}
+    We obtain the following $x_4 = (\frac{9}{4}, \frac{9}{4})^T$ for iteration 4.\\
+    Iteration 4:\\
+        \begin{align*}
+            &\theta(u_4) = (\frac{9}{4} - \frac{u}{2})^2 + (\frac{9}{4} - \frac{u}{2})^2 - \frac{u^2}{2} + 4u\\
+            &\Rightarrow\\
+            &\theta(u_4) = \frac{81}{8} - \frac{u}{2}\\
+        \end{align*}
+    The master program becomes the following: \\
+    \begin{align*}
+        & \max \quad z\\
+        &s.t.\\
+        &\quad z\leq 18 - 4u\\
+        &\quad z \leq 4u\\
+        &\quad z \leq u + \frac{9}{2}\\
+        &\quad z \leq \frac{81}{8} - \frac{u}{2}\\
+        &\quad u \geq 0\\
+    \end{align*}
 \end{document}
