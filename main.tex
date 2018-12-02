@@ -14,6 +14,7 @@
 \usepackage{enumerate}
 \usepackage{graphicx}
 \usepackage{float}
+\usepackage{booktabs}
 \newtheorem{theorem}{Theorem}
 \newtheorem{acknowledgement}[theorem]{Acknowledgement}
 \newtheorem{algorithm}[theorem]{Algorithm}
@@ -217,7 +218,7 @@
             &\theta(u_2) = (x_1 - \frac{3}{2})^2 + (x_2 - \frac{3}{2})^2 - \frac{3^2}{2} + 4(3)\\
             &\theta(u_2) = (x_1 - \frac{3}{2})^2 + (x_2 - \frac{3}{2})^2 + \frac{15}{2}\\
         \end{align*}
-    We get the following result for $x_1 = (\frac{3}{2}, \frac{3}{2})^T$.\\
+    We get the following result for $x_2 = (\frac{3}{2}, \frac{3}{2})^T$.\\
     We compare $z_2 \leq \theta(u_2) \Rightarrow$  $12 \geq \frac{15}{2}$
     We continue to the following iteration:\\
     Iteration 3:\\
@@ -241,7 +242,7 @@
             &\Rightarrow\\
             &z_3 = 9 \geq \frac{63}{8} = \theta(u_3)\\
         \end{align*}
-    We obtain the following $x_4 = (\frac{9}{4}, \frac{9}{4})^T$ for iteration 4.\\
+    We obtain the following $x_3 = (\frac{9}{4}, \frac{9}{4})^T$ for iteration 4.\\
     Iteration 4:\\
         \begin{align*}
             &\theta(u_4) = (\frac{9}{4} - \frac{u}{2})^2 + (\frac{9}{4} - \frac{u}{2})^2 - \frac{u^2}{2} + 4u\\
@@ -258,4 +259,28 @@
         &\quad z \leq \frac{81}{8} - \frac{u}{2}\\
         &\quad u \geq 0\\
     \end{align*}
+    Utilizing the following active constraints we determine $u_4$:\\
+        \begin{align*}
+            &\frac{9}{2} + u = \frac{81}{8} - \frac{u}{2}\\
+            &\Rightarrow\\
+            &u = \frac{15}{4}\\
+        \end{align*}
+    We have the following comparison for $z_4 = \frac{33}{4}$\\
+        \begin{align*}
+            &z_4 = \frac{33}{4} \geq \theta (u_4) = \frac{255}{32} \approx 7.96\\
+        \end{align*}
+    We continue to iterate until $z_k \leq \theta(u_k)$, the following are the results:
+        \begin{table}[]
+            \begin{tabular}{@{}cccccc@{}}
+            \toprule
+            Iteration  (k) & $z_k$          & $u_k$           & $\theta(u_k)$                 & $x_k$                              & Added Constraint                      \\ \midrule
+            1              & 18           & 0             & 0                           & $(0,0)^T$                          & $z \leq 18-2u$       \\
+            2              & 12           & 3             & $\frac{15}{2} = 7.5 $      & $(\frac{3}{2}, \frac{3}{2})^T$     & $z \leq 4u$        \\
+            3              & 9            & $\frac{9}{2}$   & $\frac{63}{8} \approx 7.875$  & $(\frac{9}{4}, \frac{9}{4})^T$     & $z \leq u + \frac{9}{2}$   \\
+            4              & $\frac{33}{4}$ & $\frac{15}{4}$  & $\frac{255}{32} \approx 7.96$ & $(\frac{15}{8}, \frac{15}{8})^T$   & $z \leq \frac{81}{8} - \frac{u}{2}$ \\
+            5              & 8.0625       & $\frac{33}{8}$  & $\approx 7.992$              & $(\frac{33}{16}, \frac{33}{16})^T$ & $z \leq \frac{225}{32} + \frac{u}{4}$   \\
+            6              & 8.0156       & $\frac{63}{16}$ & 7.998                       & $(\frac{63}{32}, \frac{63}{32})^T$ & $z \leq \frac{1089}{128} - \frac{u}{8}$ \\ \bottomrule
+            \end{tabular}
+        \end{table}        
+
 \end{document}
