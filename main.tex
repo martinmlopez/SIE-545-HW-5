@@ -490,4 +490,23 @@
             &\Rightarrow\\
             &\max_{\lambda} \quad \theta(4-\lambda, 0) = -19\\
         \end{align*}
+\section{BSS 6.24}
+    We have the following objective function:\\
+        \begin{align*}
+            &\min \quad 2x_1 + x_2\\
+            &s.t.\\
+            &\quad x_1 + 2x_2 -8 \leq 0\\
+            &\quad 2x_1 + 3x_2 - 6 \leq 0 \\
+            &\quad x_1 , x_2 \geq 0\\
+            &\quad x_1,x_2 \quad integers\\
+            &X = \{(x_1,x_2): 2x_1 + 3x_2 \leq 6 , x_1, x_2 \geq 0, x_1, x_2 \text{integers} \}\\
+        \end{align*}
+    We find the Dual:\\
+        \begin{align*}
+            &\theta(u) = \inf [2x_1 + x_2 + u(x_1 + 2x_2 - 8), x \in X]\\
+            &u=2\\
+            &\bar w = (0,0)\\
+            &\Rightarrow\\
+            &\beta(\bar w) = \nabla \theta(u) = -8\\ 
+        \end{align*} 
 \end{document}
